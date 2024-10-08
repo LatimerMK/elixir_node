@@ -23,7 +23,7 @@ STRATEGY_EXECUTOR_DISPLAY_NAME=$display_name
 STRATEGY_EXECUTOR_BENEFICIARY=$beneficiary
 SIGNER_PRIVATE_KEY=$private_key
 EOF
-}
+
 echo "Файл $env_file створено!"
 
 docker pull elixirprotocol/validator:v3 --platform linux/amd64
