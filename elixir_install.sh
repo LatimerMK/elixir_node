@@ -28,18 +28,12 @@ echo "Файл $env_file створено!"
 
 docker pull elixirprotocol/validator:v3 --platform linux/amd64
 
-# Запускаємо Docker-контейнер
-cd $HOME/elixir
-docker run --env-file "$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
-
-# Перевіряємо, чи контейнер запущено
-if [ $? -eq 0 ]; then
-    echo "Docker-контейнер $container_name запущено!"
-else
-    echo "Помилка: Не вдалося запустити Docker-контейнер."
-    exit 1
-fi
-
 echo "Port $node_port"
 echo "MM $beneficiary "
 echo "Validator name $display_name"
+
+# Запускаємо Docker-контейнер
+docker run --env-file "$HOME/elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
+
+
+
