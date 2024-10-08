@@ -31,10 +31,11 @@ docker pull elixirprotocol/validator:v3 --platform linux/amd64
 echo "Port $node_port"
 echo "MM $beneficiary "
 echo "Validator name $display_name"
+echo "elixir/$env_file"
 
 # Запускаємо Docker-контейнер
 cd $HOME/elixir
-docker run --env-file "elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
+docker run --env-file "/elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
 
 
 
