@@ -2,6 +2,7 @@
 
 # Запитуємо ім'я контейнера
 read -p "Введіть ім'я Docker-контейнера: " container_name
+read -p "Введіть порт ноди сток (17690): " node_port
 
 # Створення директорії /elixir/, якщо її ще немає
 mkdir -p /elixir/
@@ -26,10 +27,9 @@ EOL
 echo "Файл $env_file створено!"
 
 # Запускаємо Docker-контейнер
-docker run -d \
-  --env-file $env_file \
-  --name $container_name \
-  --restart unless-stopped \
-  elixirprotocol/validator:v3
+docker run --env-file $HOME/elixir/$env_file --name $container_name --platform linux/amd64 --restart always -p $node_port:$node_port elixirprotocol/validator:v3
 
 echo "Docker-контейнер $container_name запущено!"
+echo "Port $node_port"
+echo "MM $beneficiary "
+echo "Validator name $display_name"
