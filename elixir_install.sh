@@ -33,7 +33,8 @@ echo "MM $beneficiary "
 echo "Validator name $display_name"
 
 # Запускаємо Docker-контейнер
-docker run --env-file "/elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
+cd $HOME/elixir
+docker run --env-file "elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
 
 
 
