@@ -8,7 +8,7 @@ read -p "Введіть порт ноди сток (17690): " node_port
 mkdir -p $HOME/elixir && cd $HOME/elixir
 
 # Створюємо файл env з ім'ям контейнера
-env_file="/elixir/${container_name}.env"
+env_file="${container_name}.env"
 
 # Запитуємо дані у користувача
 read -p "Введіть STRATEGY_EXECUTOR_DISPLAY_NAME для $container_name: " display_name
@@ -33,7 +33,7 @@ echo "MM $beneficiary "
 echo "Validator name $display_name"
 
 # Запускаємо Docker-контейнер
-docker run --env-file "$HOME/elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
+docker run --env-file "/elixir/$env_file" --name "$container_name" --platform linux/amd64 --restart always -p "$node_port:$node_port" elixirprotocol/validator:v3
 
 
 
